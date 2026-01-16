@@ -70,3 +70,12 @@ SalesInvoice --> Account
 - Cross-module dependency extraction
 - Automated business rule detection
 - Expanded diagram generation
+
+  ## RAG Extension
+A lightweight Retrieval-Augmented Generation (RAG) layer was added on top of
+the extracted artifacts (`summary.md`, `entities.json`) to enable grounded
+question answering over the analyzed ERP domain.
+
+> Note: Due to API quota limitations, embeddings and LLM responses are
+> simulated. The retrieval flow and architecture match a real RAG system
+> and can be switched to OpenAI embeddings when API access is available.
