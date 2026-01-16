@@ -42,11 +42,31 @@ Entity Extraction (entities.json)
 ```json
 {
   "entity": "Sales Invoice",
+  "sample_fields": [
+    {"name": "customer", "type": "Link"},
+    {"name": "posting_date", "type": "Date"},
+    {"name": "items", "type": "Table"},
+    {"name": "grand_total", "type": "Currency"},
+    {"name": "outstanding_amount", "type": "Currency"}
+  ],
   "classes": ["SalesInvoice"],
-  "functions": ["validate", "on_submit"],
-  "relationships": ["Customer", "Item", "Account"]
+  "key_functions": ["validate", "on_submit", "make_gl_entries"],
+  "relationships": [
+    {"to": "Customer", "type": "Link"},
+    {"to": "Sales Invoice Item", "type": "Table"},
+    {"to": "Account", "type": "Link"}
+  ]
 }
 ```
+
+## Scale of Analysis
+The Sales Invoice entity contains:
+- 200+ fields across accounting, taxation, logistics, and payments
+- 100+ business logic functions handling validation, posting, and accounting
+- 50+ explicit relationships to other ERP entities
+
+This highlights the complexity of real-world ERP systems and the need for
+automated code intelligence tools.
 
 ## Relationship Diagram
 ```mermaid
@@ -55,6 +75,9 @@ SalesInvoice --> Customer
 SalesInvoice --> SalesInvoiceItem
 SalesInvoice --> Account
 ```
+The extracted relationships reveal how Sales Invoice acts as a central
+orchestrator connecting customers, items, accounts, taxes, payments,
+and inventory flows across the ERP.
 
 ## Key Learnings
 - ERPNext separates schema and business logic clearly
