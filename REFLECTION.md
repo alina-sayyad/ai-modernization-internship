@@ -31,3 +31,9 @@ exploration and reading of the code.
 ## Open Questions
 - How are cross-module dependencies managed at scale in ERP systems?
 - How can AI assist in explaining complex business logic more effectively?
+
+One surprising insight was the sheer number of responsibilities handled
+by a single ERP entity. Sales Invoice is not just a billing document but
+a coordination point for accounting, inventory, taxation, loyalty,
+subscriptions, and inter-company transactions.
+
